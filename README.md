@@ -3,17 +3,16 @@
 ### Guide for usage:
 In your terminal, run the command:
 
-`python download_gdrive.py GoogleFileID /path/for/this/file/to/download/file.type`
+`python download_gdrive.py GoogleFileID /path/for/this/file/to/download/file.zip`
 
 
 
 ### Example:
-GoogleFileID: (only includes the characters of the id)
-
+If the download link looks like below, the GoogleFileID is 0Bz7KyqmuGsilT0J5dmRCM0ROVHc
 https://drive.google.com/uc?export=download&confirm=1o_3&id=0Bz7KyqmuGsilT0J5dmRCM0ROVHc
 
-/path/for/this/file/to/download/file.type: /home/ubuntu/myfile/file.zip
-
+If the path for this file to download is /home/ubuntu/myfile/file.zip
+then the command you should run is
 `python download_gdrive.py 0Bz7KyqmuGsilT0J5dmRCM0ROVHc /home/ubuntu/myfile/file.zip`
 
 
