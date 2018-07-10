@@ -11,6 +11,8 @@ author: https://stackoverflow.com/users/1475331/user115202
 
 import requests
 
+from tqdm import tqdm
+
 def download_file_from_google_drive(id, destination):
     def get_confirm_token(response):
         for key, value in response.cookies.items():
@@ -23,9 +25,11 @@ def download_file_from_google_drive(id, destination):
         CHUNK_SIZE = 32768
 
         with open(destination, "wb") as f:
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk: # filter out keep-alive new chunks
-                    f.write(chunk)
+            with tqdm(unit='B', unit_scale=True, unit_divisor=1024) as bar:
+                for chunk in response.iter_content(CHUNK_SIZE):
+                    if chunk:  # filter out keep-alive new chunks
+                        f.write(chunk)
+                        bar.update(CHUNK_SIZE)
 
     URL = "https://docs.google.com/uc?export=download"
 
